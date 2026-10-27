@@ -14,44 +14,60 @@ Three machine learning models, each from a different model family, are trained o
 
 ## Setup
 
-This project uses [Poetry](https://github.com/python-poetry/poetry) to manage its dependencies. Python >= 3.15 is required.
+This project uses [uv](https://docs.astral.sh/uv/) to manage its dependencies. Python >= 3.15 is required.
 
-Install Poetry by following the instructions in its repository: <https://github.com/python-poetry/poetry#installation>.
+Install uv by following the instructions in its documentation: <https://docs.astral.sh/uv/getting-started/installation/>.
 
 ### Verify the installation
 
 ```bash
-poetry --version
+uv --version
 ```
 
 ### Install dependencies
 
-Run this once from the project root. It creates a `.venv` virtual environment in the project root and installs everything pinned in `poetry.lock`:
+Run this once from the project root. It creates a `.venv` virtual environment in the project root and installs everything pinned in `uv.lock`, including the `dev` dependency group:
 
 ```bash
-poetry install
+uv sync
 ```
 
 ### Use the environment
 
-Prefix commands with `poetry run` to run them inside the virtual environment, e.g.:
+Prefix commands with `uv run` to run them inside the virtual environment, e.g.:
 
 ```bash
-poetry run python your_script.py
+uv run python your_script.py
 ```
 
 Or activate the environment for the current shell and run commands directly:
 
 ```bash
-eval $(poetry env activate)
+source .venv/bin/activate
 ```
 
 To add a dependency or refresh the lock file:
 
 ```bash
-poetry add <package>
-poetry update
+uv add <package>
+uv lock --upgrade
 ```
+
+### Jupyter notebooks
+
+Run JupyterLab against the project environment without adding Jupyter to the project dependencies:
+
+```bash
+uv run --with jupyter jupyter lab
+```
+
+Notebooks can then import project modules (`src/`, etc.) directly. To install packages from inside a notebook, register a dedicated kernel once:
+
+```bash
+uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name=tyr-predictor
+```
+
+Select the `tyr-predictor` kernel in the notebook, then use `!uv add <package>` to add a dependency (updates `pyproject.toml` and `uv.lock`) or `!uv pip install <package>` to install it only into `.venv`.
 
 ## Large files (Git LFS)
 

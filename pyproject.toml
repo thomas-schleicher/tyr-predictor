@@ -1,7 +1,7 @@
 [project]
 name = "tyr-predictor"
 version = "0.1.0"
-description = ""
+description = "A win prediction AI & ML Lab for the Tank Shooter Tyr."
 authors = [
     {name = "Thomas Schleicher",email = "thschleicher@edu.aau.at"},
     {name = "Raphael Walcher",email = "rawalcher@edu.aau.at"},

@@ -231,3 +231,6 @@ devenv.local.yaml
 
 # pre-commit
 .pre-commit-config.yaml
+
+# Working Files
+data/cleaned

@@ -14,7 +14,10 @@ dependencies = [
     "pandas>=3.0.6,<4.0.0",
     "scikit-learn>=1.9.1,<2.0.0",
     "matplotlib>=3.11.2,<4.0.0",
-    "ipykernel>=7.4.0,<8.0.0"
+    "ipykernel>=7.4.0,<8.0.0",
+    "ipython>=9.17.1",
+    "tabulate>=0.10.0",
+    "fastparquet>=2026.9.0",
 ]
 
 [dependency-groups]
